@@ -1,0 +1,444 @@
+/* 1. Обнуление  */
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+    *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+:focus, :active {
+    outline: none;
+}
+
+a:focus, a:active {
+    outline: none;
+}
+
+nav, footer, header, aside {
+    display: block;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+    font-family: inherit;
+}
+
+    input::-ms-clear {
+        display: none;
+    }
+
+button {
+    cursor: pointer;
+}
+
+/* Убирает лишние отступы и пробелы в кнопках */
+    button::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+
+a, a:visited {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+/* Убирает крестик из форм в IE */
+inpute::-ms-clear{
+    display: none;
+}
+
+    
+/* 2. Основная структура */
+
+body {
+    background-image: url('img/background.png');
+}
+
+#header {
+    font-family: 'Playfair Display SC', serif;
+    color: white;
+}
+
+#container {
+    margin: auto auto;
+    text-align: center;
+}
+
+#content {
+    background: rgba(0, 0, 0, 0.8);
+    font-family: 'Old Standard TT', serif;
+    margin: 0px 10px 0px 10px;
+    padding-bottom: 5px;
+    border-left: 3px solid #fbe4ff;
+    border-right: 3px solid #fbe4ff;
+    border-top: 3px solid #fbe4ff;
+    border-bottom: 3px solid #fbe4ff;
+    color: white;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 4px 14px 0px rgba(255, 255, 255, 0.32);
+    -moz-box-shadow: 0px 4px 14px 0px rgba(255, 255, 255, 0.32);
+    box-shadow: 0px 4px 14px 0px rgba(255, 255, 255, 0.32);
+}
+
+#footer {
+    font-family: 'Old Standard TT', serif;
+    color: white;
+    width: 100%;
+    padding-bottom: 0.5px;
+}
+
+#footer p {
+    font-size: 14px;
+}
+
+/* 3. Навигация */
+
+/* Стиль ссылок внутри панели навигации */
+
+.navbar {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+.navbar a {
+    display: inline;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    margin: 0;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Old Standard TT', serif;
+    text-shadow: 1px 1px 1px gray;
+}
+
+/* Класс для присвоения верхней навигации фиксированного положения при прокрутке вниз с помощью функции stickyNav */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+    .sticky + .content {
+        padding-top: 60px;
+    }
+
+
+    /* Добавить активный класс для выделения текущей страницы */
+.active {
+    background-image: linear-gradient(to top, #535353, #5e5e5e, #6a6a6a, #757575, #818181);
+    color: white;
+}
+
+
+    /* Скрыть ссылку, которая должна открывать и закрывать верхнюю навигационную панель на небольших экранах */
+    .navbar .icon {
+        display: none;
+    }
+
+    /* Выпадающий контейнер - необходим для размещения выпадающего содержимого */
+    .dropdown {
+        display: inline;
+        overflow: hidden;
+    }
+
+        /* Стиль кнопки выпадающего списка, чтобы соответствовать внутри верхней навигации */
+        .dropdown .dropbtn {
+            display: inline;
+            font-size: 20px;
+            font-family: 'Old Standard TT', serif;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            margin: 0;
+            background-color: inherit;
+            text-shadow: 1px 1px 1px gray;
+        }
+
+    /* Стиль раскрывающегося списка (по умолчанию скрыт) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(to right top, #000000, #1a1a1a, #2c2c2c, #404040, #555555);
+    box-shadow: 0px 5px 15px 5px #000;
+}
+
+        /* Стиль ссылки внутри выпадающего списка */
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+
+    /* Добавить темный фон на верхних навигационных ссылках и выпадающая кнопка при наведении курсора */
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-image: linear-gradient(to right top, #000000, #1a1a1a, #2c2c2c, #404040, #555555);
+    color: white;
+}
+
+    /* Добавить серый фон для выпадающих ссылок при наведении курсора */
+    .dropdown-content a:hover {
+        background-color: #ddd;
+        color: white;
+    }
+
+    /* Отображение выпадающего меню при наведении курсора мыши на кнопку раскрывающегося списка */
+    .dropdown:hover .dropdown-content {
+        display: inline;
+    }
+
+
+    /* Если ширина экрана меньше 600 пикселей, скройте все ссылки, кроме первой ("Главная"). Показать ссылку, которая содержит должен открыть и закрыть верхнюю навигационную панель (.icon) */
+    @media screen and (max-width: 600px) {
+        .navbar a, .dropdown .dropbtn {
+            display: none;
+        }
+
+            .navbar a.icon {
+                margin: auto;
+                display: block;
+                background: none;
+            }
+    }
+
+    /* Класс "responsive" добавляется в верхнюю навигационную панель с помощью JavaScript, когда пользователь нажимает на значок. Этот класс делает topnav хорошо выглядеть на небольших экранах (отображать ссылки по вертикали, а не по горизонтали) */
+    @media screen and (max-width: 600px) {
+        .navbar.responsive {
+            position: sticky;
+        }
+
+            .navbar.responsive a.icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .navbar.responsive a {
+                float: none;
+                display: block;
+                text-align: center;
+            }
+
+            .navbar.responsive .dropdown {
+                float: none;
+            }
+
+            .navbar.responsive .dropdown-content a {
+                background-color: rgba(169, 169, 169, 0.8);
+            }
+
+
+                .navbar.responsive .dropdown-content a:last-child {
+                    margin-bottom: 10px;
+                }
+
+            .navbar.responsive .dropdown-content {
+                position: relative;
+            }
+
+            .navbar.responsive .dropdown .dropbtn {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+    }
+
+
+
+    /* 5. Отдельные теги */
+
+.img {
+    max-width: 320px;
+    height: auto;
+    margin-bottom: 7px;
+    box-shadow: 0px 10px 15px 10px #000;
+    border-radius: 10px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .img {
+        max-width: 170px;
+        display: inline;
+    }
+}
+
+video {
+    max-width: 320px;
+    height: auto;
+    margin: 7px 0px;
+    border: 5px solid transparent black;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px 10px #000;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    video {
+        max-width: 170px;
+        display: inline;
+    }
+}
+
+.video {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 7px;
+}
+
+    p {
+        font-size: 20px;
+        font-family: 'Old Standard TT', serif;
+        text-align: center;
+        word-wrap: break-word;
+        margin: 15px;
+        line-height: 1.2em;
+    }
+
+    h1 {
+        font-size: 32px;
+        font-family: 'Playfair Display SC', serif;
+        margin: 10px 0px 18px 0px;
+        text-shadow: 1px 1px 1px gray;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-family: 'Old Standard TT', serif;
+        margin: 20px 0px 5px 0px;
+        font-weight: bold;
+    }
+
+.a {
+    color: rgba(173,216,230,0.7)
+}
+
+    .a:visited {
+        color: rgba(128, 158, 168, 0.7);
+    }
+
+    .a:active {
+        color: #4E5B6E;
+    }
+
+    hr {
+        padding: 0;
+        margin: 10px;
+        border: none;
+        border-bottom: 2px solid #FFFFFF;
+        -webkit-box-shadow: 0px 4px 14px 0px rgba(255, 255, 255, 0.32);
+        -moz-box-shadow: 0px 4px 14px 0px rgba(255, 255, 255, 0.32);
+        box-shadow: 0px 4px 14px 0px rgba(255, 255, 255, 0.32);
+    }
+
+    /* 5. Кнопка "вверх" */
+    #myBtn {
+        display: none; /* Скрыто по умолчанию */
+        position: fixed; /* Фиксированное / липкое положение */
+        bottom: 20px; /* Поместите кнопку в нижней части страницы */
+        right: 20px; /* Разместить кнопку 30 пикселей от правого */
+        z-index: 99; /* Убедитесь, что он не перекрывается */
+        border: none; /* Удалить границы */
+        outline: none; /* Удалить контур */
+        background: rgba(138, 212, 255, 0.8);
+        color: white; /* Цвет текста */
+        cursor: pointer; /* Добавить указатель мыши при наведении */
+        border-radius: 50px;
+        padding: 15px; /* Немного отступов */
+    }
+
+        #myBtn:hover {
+            background-color: rgba(128, 128, 128, 0.8); /* Добавить темно-серый фон при наведении курсора */
+        }
+
+#arrowTop {
+    position: fixed; /* Фиксированное / липкое положение */
+    bottom: 20px; /* Поместите кнопку в нижней части страницы */
+    right: 20px; /* Разместить кнопку 30 пикселей от правого */
+    z-index: 99; /* Убедитесь, что он не перекрывается */
+    border: none; /* Удалить границы */
+    outline: none; /* Удалить контур */
+    background: rgba(173,216,230, 0.8);
+    color: white; /* Цвет текста */
+    cursor: pointer; /* Добавить указатель мыши при наведении */
+    border-radius: 50px;
+    padding: 15px; /* Немного отступов */
+}
+
+/* 6. Галерея */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+/* Создайте четыре одинаковых столбца, которые находятся рядом друг с другом */
+.column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+    margin-bottom: 15px;
+}
+
+    .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+        box-shadow: 0px 10px 15px 10px #000;
+        border-radius: 10px;
+    }
+
+/* Адаптивный макет - делает два столбца макет вместо четырех столбцов */
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Адаптивный макет - делает два столбца стека друг на друга, а не рядом друг с другом */
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
